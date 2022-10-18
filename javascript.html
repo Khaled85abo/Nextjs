@@ -1,55 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
 
 
     <script>
         const data = []
-const names= ['Big Brand', 'Studio Great', 'Star Retaliler','Good Bussiness', 'Avengers', 'Tomathawk', 'Red River']
+        const names = ['Big Brand', 'Studio Great', 'Star Retaliler', 'Good Bussiness', 'Avengers', 'Tomathawk', 'Red River']
 
-const years = ['2022', '2021']
-const months = ['january', 'february', 'mars', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december']
-const days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
-const values = [ 4300, 5500, 2200, 1300, 6000, 900, 450, 20000, 12000,4900, 9400]
-const oldDate = new Date('september/11/2020')
-oldDate
-const month = oldDate.getFullYear()
-month
-const today = new Date()
-today
+        const years = ['2022', '2021']
+        const months = ['january', 'february', 'mars', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december']
+        const days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
+        const values = [4300, 5500, 2200, 1300, 6000, 900, 450, 20000, 12000, 4900, 9400]
+        const oldDate = new Date('september/11/2020')
+        oldDate
+        const month = oldDate.getFullYear()
+        month
+        const today = new Date()
+        today
 
-for(let i = 0; i < 5000; i++){
-    const obj = {}
-    obj.orderId = i
-    obj.customer = names[Math.floor(Math.random() * names.length)]
-    const year = years[1]
-    const randomMonth = months[Math.floor(Math.random() * months.length)]
-    const randomDay  = days[Math.floor(Math.random() * days.length)]
-    obj.date = new Date(`${randomMonth}/${randomDay}/${year}`)
-    obj.value = values[Math.floor(Math.random() * values.length)]
-    data.push(obj)
-}
+        for (let i = 0; i < 5000; i++) {
+            const obj = {}
+            obj.orderId = i
+            obj.customer = names[Math.floor(Math.random() * names.length)]
+            const year = years[1]
+            const randomMonth = months[Math.floor(Math.random() * months.length)]
+            const randomDay = days[Math.floor(Math.random() * days.length)]
+            obj.date = new Date(`${randomMonth}/${randomDay}/${year}`)
+            obj.value = values[Math.floor(Math.random() * values.length)]
+            data.push(obj)
+        }
 
-for (let i = 0; i < 5000; i++) {
-    const obj = {}
-    obj.orderId = i
-    obj.customer = names[Math.floor(Math.random() * names.length)]
-    const year = years[0]
-    const randomMonth = months[Math.floor(Math.random() * months.length)]
-    const randomDay = days[Math.floor(Math.random() * days.length)]
-    obj.date = new Date(`${randomMonth}/${randomDay}/${year}`)
-       obj.value = values[Math.floor(Math.random() * values.length)]
-    data.push(obj)
-}
+        for (let i = 0; i < 5000; i++) {
+            const obj = {}
+            obj.orderId = i
+            obj.customer = names[Math.floor(Math.random() * names.length)]
+            const year = years[0]
+            const randomMonth = months[Math.floor(Math.random() * months.length)]
+            const randomDay = days[Math.floor(Math.random() * days.length)]
+            obj.date = new Date(`${randomMonth}/${randomDay}/${year}`)
+            obj.value = values[Math.floor(Math.random() * values.length)]
+            data.push(obj)
+        }
 
-console.log(data)
+        console.log(data)
+        const organized = {
+
+        }
+        for (order of data) {
+            const year = order.date.getFullYear();
+            const month = months[order.date.getMonth()]
+
+            if (!organized[year]) {
+                organized[year] = {}
+                organized[year][month] = [order]
+            } else {
+                if (!organized[year][month]) {
+                    organized[year][month] = [order]
+                } else {
+                    organized[year][month].push(order)
+                }
+            }
+
+
+        }
+        console.log(organized)
+
+        const totalPerMonth = []
+
+        for (let yearKey of Object.keys(organized)) {
+            const aYear = organized[yearKey]
+            for (let key of Object.keys(aYear)) {
+                const aMonth = aYear[key]
+                let total = 0
+                for (let order of aMonth) {
+
+                    total += order.value
+                }
+                // const total = aMonth.reduce((prev, curr)=> prev.value + curr.value, 0)
+                const obj = { month: `${key}`, total, year: `${yearKey}` }
+                totalPerMonth.push(obj)
+            }
+        }
+
+        const sorted = totalPerMonth.sort(function (order1, order2) {
+
+            if (order1.year > order2.year) return -1;
+            if (order1.year < order2.year) return 1;
+
+            if (months.indexOf(order1.month) > months.indexOf(order2.month)) return -1;
+            if (months.indexOf(order2.month) < months.indexOf(order2.month)) return 1;
+        })
+        console.log(sorted)
+
     </script>
-    
+
 </body>
+
 </html>
