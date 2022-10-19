@@ -6,43 +6,73 @@ const colors = scaleOrdinal(schemeCategory10).range();
 const designColors = ['#B0BDC6', '#D1DAE0']
 const data = [
     {
-        name: "Page A",
-        uv: 4000,
+        name: "Jan",
+        uv: 7000,
         pv: 2400,
         amt: 2400
     },
     {
-        name: "Page B",
+        name: "Feb",
         uv: 3000,
         pv: 1398,
         amt: 2210
     },
     {
-        name: "Page C",
+        name: "Mar",
         uv: 2000,
         pv: 9800,
         amt: 2290
     },
     {
-        name: "Page D",
+        name: "Apr",
         uv: 2780,
         pv: 3908,
         amt: 2000
     },
     {
-        name: "Page E",
+        name: "May",
         uv: 1890,
         pv: 4800,
         amt: 2181
     },
     {
-        name: "Page F",
-        uv: 2390,
+        name: "Jun",
+        uv: 12390,
         pv: 3800,
         amt: 2500
     },
     {
-        name: "Page G",
+        name: "Jul",
+        uv: 3490,
+        pv: 4300,
+        amt: 2100
+    },
+    {
+        name: "Aug",
+        uv: 3490,
+        pv: 4300,
+        amt: 2100
+    },
+    {
+        name: "Sep",
+        uv: 3490,
+        pv: 4300,
+        amt: 2100
+    },
+    {
+        name: "Oct",
+        uv: 3490,
+        pv: 4300,
+        amt: 2100
+    },
+    {
+        name: "Nov",
+        uv: 3490,
+        pv: 4300,
+        amt: 2100
+    },
+    {
+        name: "Dec",
         uv: 3490,
         pv: 4300,
         amt: 2100
@@ -59,8 +89,8 @@ const getPath = (x, y, width, height) => {
 };
 
 const TriangleBar = (props) => {
-    const { fill, x, y, width, height } = props;
-    console.log(fill, x, y, width, height)
+    let { fill, x, y, width, height } = props;
+    console.log('fill', fill, 'x', x, 'y', y, 'width', width, 'height', height)
     return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
 };
 const RoundedDiv = () => {
@@ -72,7 +102,7 @@ export default function App() {
     return (
         <>
             <ComposedChart
-                width={500}
+                width={800}
                 height={300}
                 data={data}
                 margin={{
@@ -89,7 +119,7 @@ export default function App() {
                     dataKey="uv"
                     fill="#8884d8"
                     shape={<TriangleBar />}
-                // label={{ position: "top" }}
+                //label={{ position: "top" }}
                 >
                     {data.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={designColors[1 % 20]} />

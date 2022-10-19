@@ -86,3 +86,30 @@ const sorted = totalPerMonth.sort(function (order1, order2) {
 console.log(sorted)
 
 
+const objIndex = (arr, srch) => {
+    let index = -1
+    for (let ind in arr) {
+        if (arr[ind].name == srch) {
+            return ind
+        }
+    }
+    return index
+}
+
+const TotalPerCustomer = (scale = 'year', data) => {
+    if (scale === 'year') { }
+    if (scale === 'month') { }
+
+    const output = []
+    // {name: '', total: 234324}
+    for (let order of data) {
+
+    }
+
+    return output; // [{name: 'big brand', total value: 832429},{},{},{}]
+}
+const test = [
+    { name: 'one', total: 2342 },
+    { name: 'two', total: 242 },
+    { name: 'three', total: 232 },
+]

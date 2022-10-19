@@ -4,37 +4,51 @@ const data = [
     {
         "name": "Page A",
         "uv": 4000,
-        "pv": 2400
+        "pv": 2400,
+        'budget': 3000,
+        'average': 3500
     },
     {
         "name": "Page B",
         "uv": 3000,
-        "pv": 1398
+        "pv": 1398,
+        'budget': 3000,
+        'average': 3500
     },
     {
         "name": "Page C",
         "uv": 2000,
-        "pv": 9800
+        "pv": 9800,
+        'budget': 4000,
+        'average': 3500
     },
     {
         "name": "Page D",
         "uv": 2780,
-        "pv": 3908
+        "pv": 3908,
+        'budget': 4000,
+        'average': 3500
     },
     {
         "name": "Page E",
         "uv": 1890,
-        "pv": 4800
+        "pv": 4800,
+        'budget': 5000,
+        'average': 3500
     },
     {
         "name": "Page F",
         "uv": 2390,
-        "pv": 3800
+        "pv": 3800,
+        'budget': 4000,
+        'average': 3500
     },
     {
         "name": "Page G",
         "uv": 3490,
-        "pv": 4300
+        "pv": 4300,
+        'budget': 3000,
+        'average': 3500
     }
 ]
 const datab = [
@@ -101,17 +115,18 @@ const chart = () => {
                 <Legend />
                 <Line type="monotone" dataKey="pv" stroke="#8884d8" />
                 <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-            </LineChart>
+            </LineChart> */}
             <ComposedChart width={730} height={250} data={data}
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
                 <YAxis />
-                <Tooltip />
-                <Legend />
+                {/* <Tooltip /> */}
+                {/* <Legend /> */}
                 <Bar dataKey="uv" fill="#8884d8" />
-                <Line type="monotone" dataKey="pv" stroke="#82ca9d" />
-            </ComposedChart> */}
+                <Line type="monotone" dataKey="budget" stroke="#E0BB75" />
+                <Line type="monotone" dataKey="average" stroke="#487D5D" />
+            </ComposedChart>
             <div style={{ width: '100%', height: 300 }}>
                 <ResponsiveContainer>
                     <ComposedChart
