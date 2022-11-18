@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE `Order` MODIFY `FaktDat` VARCHAR(191) NULL,
+    MODIFY `OrdDatum` VARCHAR(191) NOT NULL,
+    MODIFY `OrdLevDat` VARCHAR(191) NULL;

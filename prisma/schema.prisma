@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+enum Status {
+  Done
+  Pending
+  Processing
+  Shipping
+  Delivering
+}
+
+model Order {
+id Int @id @default(autoincrement())
+OrderNr Int @unique
+FaktNr Int? @unique
+OhOrdSum Float
+OhOrdSumInklMoms Float
+ForetagKod Int
+OrdBokningsStatus Int
+
+ValKod String @db.VarChar(255)
+VRef String
+Saljare String?
+KundRef2 String?
+OrdLevAdr1 String?
+OrdLevAdr3 String?
+OrdLevAdr4 String?
+LandsKod String
+OrderNrAlfa String
+
+OrdLevDat String?
+OrdDatum String
+FaktDat String?
+}
